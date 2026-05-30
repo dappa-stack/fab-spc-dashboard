@@ -78,9 +78,56 @@ pip install numpy pandas matplotlib streamlit plotly
 
 ---
 
+## Project 3 — ML Fault Detection (Plasma Etch Tool)
+
+Machine learning fault detection and classification system for plasma
+etch tool sensor data. Mirrors Fault Detection & Classification (FDC)
+systems used at Lam Research, Applied Materials, and Intel.
+
+**What it does:**
+
+- Generates realistic plasma etch tool sensor data across 7 sensors
+  (RF power, chamber pressure, gas flow, chuck temperature, bias voltage,
+  reflected power, DC bias)
+- Simulates 4 fault conditions: pressure drift, RF instability, gas flow
+  anomaly, chuck temperature excursion
+- Extracts 49 statistical features per sensor window (mean, std, slope,
+  RMS, range)
+- Trains Random Forest, Gradient Boosting, and Logistic Regression
+  classifiers — 100% test accuracy across all 5 classes
+- Interactive Streamlit dashboard with real-time fault injection,
+  sensor trace visualization, probability charts, and recommended
+  corrective actions
+
+**Run it:**
+
+```bash
+python generate_etch_data.py
+python fault_detector.py --save
+streamlit run fault_dashboard.py
+```
+
+**Fault classes:**
+| Class | Fault | Primary Sensors Affected |
+|-------|-------|--------------------------|
+| 0 | Normal | All within spec |
+| 1 | Pressure Drift | Pressure ↑, DC Bias ↓ |
+| 2 | RF Instability | RF Power oscillates, Reflected Power ↑ |
+| 3 | Gas Flow Anomaly | Gas Flow ↓, Pressure ↓, DC Bias ↓ |
+| 4 | Chuck Temp Excursion | Chuck Temp ↑, Bias Voltage ↑ |
+
+---
+
+## Installation
+
+```bash
+pip install numpy pandas matplotlib streamlit plotly scikit-learn
+```
+
 ## Skills demonstrated
 
-Python · Statistical Process Control · Semiconductor Process Monitoring ·
-Wafer Yield Analysis · Murphy's Yield Model · Streamlit · Plotly · Numpy ·
-Pandas · Western Electric Run Rules · Process Capability (Cp/Cpk) ·
-Defect Density Modeling · Semiconductor Fab Process Knowledge
+Python · Machine Learning · Random Forest · Feature Engineering ·
+Statistical Process Control · Wafer Yield Analysis · Murphy's Yield Model ·
+Semiconductor Fab Process Knowledge · Plasma Etch · Fault Detection &
+Classification (FDC) · Streamlit · Plotly · Scikit-learn · Numpy · Pandas ·
+Western Electric Run Rules · Process Capability (Cp/Cpk)
